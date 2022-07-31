@@ -1,0 +1,173 @@
+<head>
+
+<!-- begin quiz script -->
+<script>
+function finish() {
+	var ext = '.html',;
+	var results = new Array("none","Troskista infiltrado","Kirchnerista","Peronista de Perón","Menemista","Camaleón Peronista");
+	var nums = new Array(6);
+	for(var i = 0; i < nums.length; i++) nums[i] = 0;
+	for(var i = 1; i <= 3; i++) {
+		var q = document.forms['quiz'].elements['question_'+i];
+		if(q[0].type=='checkbox') {
+			var n = 0;
+		}
+		for(var j = 0; j < q.length; j++) {
+			if(q[j].checked) {
+				var a = q[j].value.split(',');
+				for(var k = 0; k < a.length; k++) {
+					nums[a[k]]++;
+				}
+				if(q[j].type=='radio') break;
+				else n++;
+			}
+			if(j == q.length-1&&q[j].type=='radio') {nums[0]++;}
+		}
+		if(q[0].type=='checkbox'&&((document.forms['quiz'].elements['question_'+i+'_min']&&n<document.forms['quiz'].elements['question_'+i+'_min'].value)||(document.forms['quiz'].elements['question_'+i+'_max']&&n>document.forms['quiz'].elements['question_'+i+'_max'].value))) nums[0]++;
+	}
+	var j = new Array('0');
+	for (i in nums) if(nums[i]>nums[j[0]]){j=new Array(''+i);} else if(nums[i]==nums[j[0]])j[j.length] = i;
+	//var o = '';for(var i in results)o+=results[i]+'='+nums[i]+'\n';
+	//alert(o);
+	if(nums[0]!=0) {
+		alert('You missed or incorrectly answered '+nums[0]+' questions!');
+	}
+	else if(j[0]==0) {
+		alert('No result could be determined.');
+	}
+	else {
+		location = results[j[0]]+ext;
+	}
+}
+</script>
+<!-- end quiz script -->          
+</head> 
+
+<body>
+<!-- begin quiz html -->
+<form name="quiz" action="javascript:finish();">
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr>
+<td width="34%">
+<font size="2" face="Verdana, Arial, Helvetica, sans-serif">
+<strong>¿ Cual es el posicionamiento político del peronismo!</strong> (Choose  exactly 1)
+</font>
+</td>
+</tr>
+<tr>
+<td>
+<font size="2" face="Verdana, Arial, Helvetica, sans-serif">
+<input name="question_1" type="checkbox" value="1"> Socialismo nacional
+</font>
+</td>
+</tr><tr>
+<td>
+<font size="2" face="Verdana, Arial, Helvetica, sans-serif">
+<input name="question_1" type="checkbox" value="2"> Progresismo
+</font>
+</td>
+</tr><tr>
+<td>
+<font size="2" face="Verdana, Arial, Helvetica, sans-serif">
+<input name="question_1" type="checkbox" value="3"> Tercera posición
+</font>
+</td>
+</tr><tr>
+<td>
+<font size="2" face="Verdana, Arial, Helvetica, sans-serif">
+<input name="question_1" type="checkbox" value="4"> Capitalismo nacional
+</font>
+</td>
+</tr><tr>
+<td>
+<font size="2" face="Verdana, Arial, Helvetica, sans-serif">
+<input name="question_1" type="checkbox" value="5"> Lo que diga el lider
+</font>
+</td>
+</tr>
+</table>
+<br /><table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr>
+<td width="34%">
+<font size="2" face="Verdana, Arial, Helvetica, sans-serif">
+<strong>Sobre la política petrolera...</strong> (Choose  exactly 1)
+</font>
+</td>
+</tr>
+<tr>
+<td>
+<font size="2" face="Verdana, Arial, Helvetica, sans-serif">
+<input name="question_2" type="checkbox" value=""> Nacionalizar todo recurso natural, no al imperialismo
+</font>
+</td>
+</tr><tr>
+<td>
+<font size="2" face="Verdana, Arial, Helvetica, sans-serif">
+<input name="question_2" type="checkbox" value=""> YPF estatal + privados = Desarrollo nacional
+</font>
+</td>
+</tr><tr>
+<td>
+<font size="2" face="Verdana, Arial, Helvetica, sans-serif">
+<input name="question_2" type="checkbox" value="3"> Y no se, es todo un tema (laugs in standard oil)
+</font>
+</td>
+</tr><tr>
+<td>
+<font size="2" face="Verdana, Arial, Helvetica, sans-serif">
+<input name="question_2" type="checkbox" value="4"> Privatizar para entrar al primer mundo
+</font>
+</td>
+</tr><tr>
+<td>
+<font size="2" face="Verdana, Arial, Helvetica, sans-serif">
+<input name="question_2" type="checkbox" value="5"> Lo que diga el lider
+</font>
+</td>
+</tr>
+</table>
+<br /><table width="100%" border="0" cellspacing="0" cellpadding="5">
+<tr>
+<td width="34%">
+<font size="2" face="Verdana, Arial, Helvetica, sans-serif">
+<strong>El campo...</strong> (Choose  exactly 1)
+</font>
+</td>
+</tr>
+<tr>
+<td>
+<font size="2" face="Verdana, Arial, Helvetica, sans-serif">
+<input name="question_3" type="checkbox" value="1"> ES EXTRACTIVISTA, MONOCULTIVO DE SOJA, ¡EXPROPIESE!
+</font>
+</td>
+</tr><tr>
+<td>
+<font size="2" face="Verdana, Arial, Helvetica, sans-serif">
+<input name="question_3" type="checkbox" value="2"> Que se deje de joder y liquide las silobolsas que el pueblo tiene hambre
+</font>
+</td>
+</tr><tr>
+<td>
+<font size="2" face="Verdana, Arial, Helvetica, sans-serif">
+<input name="question_3" type="checkbox" value="3"> Y, mira, como dice Samid hay que buscar fuentes diversas de dolares, ya suficiente con solo meterse con el campo
+</font>
+</td>
+</tr><tr>
+<td>
+<font size="2" face="Verdana, Arial, Helvetica, sans-serif">
+<input name="question_3" type="checkbox" value=""> 0 Retenciones, que la crisis no la pagen los privados
+</font>
+</td>
+</tr><tr>
+<td>
+<font size="2" face="Verdana, Arial, Helvetica, sans-serif">
+<input name="question_3" type="checkbox" value="5"> Todo bien con el campo, mira tres llamadas y un asado y resuelvo todo, Ba da TUM
+</font>
+</td>
+</tr>
+</table>
+<br /> <INPUT TYPE="submit" value="Finish">
+ <INPUT TYPE="reset" value="Reset">
+</form>
+<!-- end quiz html -->          
+</body>
